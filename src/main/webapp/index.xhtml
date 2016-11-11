@@ -11,8 +11,8 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:commandButton action="contactoEdit"
-			value="Nuevo" />
+            <p:commandButton action="CrearContacto"
+			value="Nuevo Contacto" />
             <p:dataTable var="_contacto" value="#{contactoListBean.instance.lista}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -34,10 +34,12 @@
                     <p:commandButton id="detalle" value="Detalle" action="contacto">
                         <f:setPropertyActionListener value="#{_contacto}" target="#{contactoBean.instance}" />
                     </p:commandButton>
+                     <p:commandButton id="editar" value="Editar" action="CrearContacto">
+                        <f:setPropertyActionListener value="#{_contacto}" target="#{contactoBean.instance}" />
+                    </p:commandButton>
                 </p:column>
 
             </p:dataTable> 
-            <p:commandButton action="CrearContacto.xhtml?faces-redirect=true" value="Agregar Contacto"/>
         </h:form>
     </h:body>
 </html>

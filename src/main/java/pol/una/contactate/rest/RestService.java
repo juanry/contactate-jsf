@@ -57,7 +57,8 @@ public class RestService {
      * @return Retorna el contacto actualizado
      */
     public static Contacto update(Contacto contacto){
-        String updateUrl =  serviceUrl+"/"+String.valueOf(contacto.getId());
+
+    	String updateUrl =  serviceUrl+"/"+String.valueOf(contacto.getId());
         try {
             URL url = new URL(updateUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

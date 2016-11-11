@@ -2,13 +2,81 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:pe="http://primefaces.org/ui/extensions"
+      >
        
     <h:head>
         <title>Contactate - Tu Angenda Web</title>
+        <link rel="icon" type="image/png" href="/resources/img/icon.png" />
         
     </h:head>
-    <h:body>
+   <h:body>
+    	 <f:facet name="header">Nuevo Contacto</f:facet>
+    	 <h4 align="center">Contactate - Tu Angenda Web</h4>
+    	 <div style="width: 100px">
+    	 <h:form>
+    	 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+    	 </h:form>
+    	 <h:form id="contacto" styleClass="edit">
     	 
+
+		 <h:panelGrid id="grid" columns="3" cellpadding="5">
+		  	
+				<p:outputLabel for="nombre" value="Nombre: " />
+					<p:inputText styleClass="inputs" id="nombre" required="true"
+						value="#{contactoBean.instance.nombre}" />
+					<p:message for="nombre" />
+
+			
+					<p:outputLabel for="apellido" value="Apellido: " />
+					<p:inputText styleClass="inputs" id="apellido" required="true"
+						value="#{contactoBean.instance.apellido}">
+					</p:inputText>
+					<p:message for="apellido" />
+					<p:outputLabel for="alias" value="Alias: " />
+					<p:inputText styleClass="inputs" id="alias"
+						value="#{contactoBean.instance.alias}">
+					</p:inputText>
+					<h:panelGroup/>
+					<p:outputLabel for="email" value="Email " />
+			
+					<p:inputText styleClass="inputs" id="email" required="true"
+						value="#{contactoBean.instance.email}" validatorMessage="Formato de email invalido">
+						<p:watermark value="Ej: nombre@midominio.com" for="email"></p:watermark>
+						 <f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</p:inputText>
+					<p:message for="email" />
+					<p:outputLabel for="telefono" value="Telefono: " />
+					<p:inputText styleClass="inputs" id="telefono" required="true"
+						value="#{contactoBean.instance.telefono}">
+					</p:inputText>
+					<p:message for="telefono" />
+					<p:outputLabel for="direccion" value="Direccion " />
+					<p:inputText styleClass="inputs" id="direccion" 
+						value="#{contactoBean.instance.direccion}">
+					</p:inputText>
+					<h:panelGroup/>
+					
+				
+				<div style="clear: both">
+					<span class="required">*</span> Campos Requeridos
+				</div>
+			</h:panelGrid>
+			<div class="actionButtons">
+				<h:commandButton styleClass="button medium red"  icon="ui-icon-disk" id="Guardar"
+					
+					value="Guardar" action="#{contactoBean.persist}"  rendered="#{contactoBean.instance.id == null}"/>
+				<h:commandButton styleClass="button medium red"  icon="ui-icon-disk" id="Actualizar"
+					value="Guardar Edicion" action="#{contactoBean.update}"  rendered="#{contactoBean.instance.id != null}"/>
+				<h:commandButton styleClass="button medium red"  icon="ui-icon-disk" id="Volver"
+					value="Volver" action="index" />
+			</div>
+		</h:form>
+		</div>
+
     </h:body>
     </html>
