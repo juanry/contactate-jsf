@@ -1,7 +1,5 @@
 package pol.una.contactate.util;
 
-import java.util.Date;
-
 public class Contacto {
     private Long id;
     private String nombre;

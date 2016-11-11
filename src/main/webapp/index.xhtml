@@ -2,33 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-       
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:head>
         <title>Contactate - Tu Angenda Web</title>
+        <link rel="icon" type="image/png" href="/resources/img/icon.png" />
     </h:head>
     <h:body>
         <h:form>
+            <p:commandButton action="contactoEdit"
+			value="Nuevo" />
             <p:dataTable var="_contacto" value="#{contactoListBean.instance.lista}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"
-                         emptyMessage="No hay resultados.!">
-                <p:column headerText="Id">
-                    <h:outputText value="#{_contacto.id}" />
-                </p:column>
-
+                         emptyMessage="No hay resultados!">
                 <p:column headerText="Nombre">
                     <h:outputText value="#{_contacto.nombre}" />
                 </p:column>
-
                 <p:column headerText="Apellido">
                     <h:outputText value="#{_contacto.apellido}" />
                 </p:column>
-
                 <p:column headerText="Telefono">
                     <h:outputText value="#{_contacto.telefono}" />
                 </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{_contacto.email}" />
+                </p:column>
+                <p:column headerText="Acciones">
+                    <p:commandButton id="detalle" value="Detalle" action="contacto">
+                        <f:setPropertyActionListener value="#{_contacto}" target="#{contactoBean.instance}" />
+                    </p:commandButton>
+                </p:column>
+
             </p:dataTable>
         </h:form>
     </h:body>
