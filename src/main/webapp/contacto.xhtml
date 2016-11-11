@@ -37,7 +37,9 @@
             </p:panelGrid>
             <p:panelGrid columns="3">
                 <p:commandButton value="Volver" action="index" icon="fa fa-fw fa-angle-left" />
-                <p:commandButton value="Editar" icon="fa fa-fw fa-edit"></p:commandButton>
+                <p:commandButton id="editar" value="Editar" action="CrearContacto">
+                        <f:setPropertyActionListener value="#{contactoBean.instance}" target="#{contactoBean.instance}" />
+                </p:commandButton>
                 
                 
             </p:panelGrid>
