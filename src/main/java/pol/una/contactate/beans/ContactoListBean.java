@@ -40,6 +40,6 @@ public class ContactoListBean {
     
     public void remove(Long id){
         RestService.remove(id);
-        System.out.println("Borrado.!");
+        this.instance = RestService.getContactos();
     }
 }
