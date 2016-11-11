@@ -72,7 +72,7 @@ public class ContactoBean{
     	else
     	{
     		contactoNoActualizado();
-    	}
+    	} 
     }
     public void contactoActualizado()
     {
