@@ -13,20 +13,33 @@
         <h:form>
             <p:panelGrid columns="2">
                 <f:facet name="header">
-                    Contacto
+                    Detalle Contacto
                 </f:facet>
-
-                <h:outputText value="Name:" />
+                <h:outputText value="Nombre:" />
                 <h:outputText value="#{contactoBean.instance.nombre}" />
-
+                
+                <h:outputText value="Apellido:" />
+                <h:outputText value="#{contactoBean.instance.apellido}" />
+                
+                <h:outputText value="Alias:" />
+                <h:outputText value="#{contactoBean.instance.alias}" />
+                
                 <h:outputText value="Telefono:" />
                 <h:outputText value="#{contactoBean.instance.telefono}" />
-
-                <h:outputText value="Position:" />
-                <h:outputText value="Shooting Guard" />
-
-                <h:outputText value="Number:" />
-                <h:outputText value="24" />
+                
+                <h:outputText value="Email:" />
+                <h:outputText value="#{contactoBean.instance.email}" />
+                
+                
+                <h:outputText value="Direccion:" />
+                <h:outputText value="#{contactoBean.instance.direccion}" />
+                
+            </p:panelGrid>
+            <p:panelGrid columns="3">
+                <p:commandButton value="Volver" action="index" icon="fa fa-fw fa-angle-left" />
+                <p:commandButton value="Editar" icon="fa fa-fw fa-edit"></p:commandButton>
+                
+                
             </p:panelGrid>
         </h:form>
     </h:body>

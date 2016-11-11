@@ -13,7 +13,7 @@ import pol.una.contactate.util.Contacto;
 @RequestScoped
 public class ContactoBean{
     
-    private Contacto instance;
+    private Contacto instance = new Contacto();
     
     
     private Long idContacto;
@@ -21,7 +21,7 @@ public class ContactoBean{
     public void init(Long id){
         idContacto = id;
         System.out.println("Esto es una prueba de cargar");
-        Contacto instance = RestService.detail(idContacto);
+        this.instance = RestService.detail(idContacto);
     }
     
     public Contacto getInstance() {
@@ -39,6 +39,11 @@ public class ContactoBean{
         this.idContacto = idContacto;
     }
     
+    public void remove(){
+        System.out.println(instance);
+        RestService.remove(instance.getId());
+        
+    }
     
     
 }

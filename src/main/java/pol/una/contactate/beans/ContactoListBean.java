@@ -11,6 +11,8 @@ public class ContactoListBean {
     
     private ContactoList instance;
     
+    private String filtro;
+    
     public ContactoListBean(){
          this.instance = RestService.getContactos();
     }
@@ -23,4 +25,21 @@ public class ContactoListBean {
         this.instance = instance;
     }
     
+    public void setFiltro(String filtro){
+        this.filtro = filtro;
+    }
+    
+    public String getFiltro(){
+        return filtro;
+    }
+    
+    public void filtrar(){
+        this.instance = RestService.getContactos(filtro);
+    }
+    
+    
+    public void remove(Long id){
+        RestService.remove(id);
+        System.out.println("Borrado.!");
+    }
 }

@@ -51,6 +51,33 @@ public class RestService {
             return null;
         }
     }
+    
+    public static ContactoList getContactos(String query){
+        try {
+            String filtro = serviceUrl + "?filtro="+query;
+            URL url = new URL(filtro);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
+            }
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    (conn.getInputStream())));
+            String output = br.readLine();
+            conn.disconnect();
+            Gson gson = new Gson();
+            ContactoList response = gson.fromJson(output, ContactoList.class);
+            return response;
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(RestService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (IOException ex) {
+            Logger.getLogger(RestService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     /**
      * Metodo que se encarga de actualizar un contacto
      * @param contacto, contacto el cual queremos actualizar

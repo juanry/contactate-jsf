@@ -11,9 +11,15 @@
     </h:head>
     <h:body>
         <h:form>
+            
+            <p:inputText value="#{contactoListBean.filtro}" placeholder="Ingrese un valor"/>
+            <p:commandButton value="Buscar" actionListener="#{contactoListBean.filtrar}" update="contactoList">
+                
+            </p:commandButton>
+            <p:separator />
             <p:commandButton action="contactoEdit"
 			value="Nuevo" />
-            <p:dataTable var="_contacto" value="#{contactoListBean.instance.lista}" rows="10"
+            <p:dataTable id="contactoList" var="_contacto" value="#{contactoListBean.instance.lista}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"
@@ -34,6 +40,10 @@
                     <p:commandButton id="detalle" value="Detalle" action="contacto">
                         <f:setPropertyActionListener value="#{_contacto}" target="#{contactoBean.instance}" />
                     </p:commandButton>
+                    <p:commandButton id="eliminar" value="Eliminar" action="#{contactoListBean.remove(_contacto.id)}"
+                                     onclick="alert('Estas seguro que desea eliminar el contacto')" >
+                    </p:commandButton>
+                    
                 </p:column>
 
             </p:dataTable>
