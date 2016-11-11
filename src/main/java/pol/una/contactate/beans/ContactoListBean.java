@@ -23,5 +23,4 @@ public class ContactoListBean {
         this.instance = instance;
     }
     
-    
 }
